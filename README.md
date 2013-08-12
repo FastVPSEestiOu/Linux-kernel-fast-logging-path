@@ -6,9 +6,8 @@ Path for linux kernel for building lists on changed files without any overhead
 
 Ubuntu 2.6.35 build pathc
 
-<code>
-#!/bin/sh
 
+# #!/bin/sh
 # From https://progress.fastvps.ru/view.php?id=508
 
 apt-get update;
@@ -61,4 +60,3 @@ no_dumpfile=true skipabi=true skipmodule=true debian/rules binary-generic
 
 cd ..
 
-</code>
