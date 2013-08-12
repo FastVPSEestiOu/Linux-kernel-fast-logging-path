@@ -8,8 +8,6 @@ Author: Pavel Bolding, boldin.pavel [at] gmail.com
 Debian Squeeze with Ubuntu kernel build manual:
 
 ```bash
-# #!/bin/sh
-
 apt-get update;
 cd /usr/src
 
