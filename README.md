@@ -49,10 +49,10 @@ cp /dev/null debian.master/config/amd64/config.flavour.virtual
 cp /dev/null debian.master/config/enforce 
 
 # Get our config
-wget http://download.fastvps.ru/dist/kernel_configs/config-2.6.35-23-generic -Odebian.master/config/amd64/config.common.amd64
+wget http://..../kernel_configs/config-2.6.35-23-generic -Odebian.master/config/amd64/config.common.amd64
 
 # Bluehost backup patch
-wget http://download.fastvps.ru/dist/fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.patch
+wget http://......./fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.patch
 patch -p1 < fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.patch
 
 # Build kernel
