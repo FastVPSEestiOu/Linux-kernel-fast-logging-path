@@ -63,7 +63,12 @@ dpkg --ignore-depends=wireless-crda -i linux-image-2.6.35-32-generic_2.6.35-32.6
 
 Customization in booted system.
 
-You need add this line to /etc/fstab for enable mounting of debugfs filesystem:
+You need create miunt point for debugfs:
+```bash
+mkdir /mnt/debugfs
+```
+
+And add this line to /etc/fstab for enable mounting of debugfs filesystem:
 ```bash
 none /mnt/debugfs debugfs
 ```
