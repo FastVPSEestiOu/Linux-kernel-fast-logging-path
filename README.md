@@ -5,7 +5,7 @@ Path for linux kernel for building lists on changed files without any overhead
 
 Author: Pavel Bolding, boldin.pavel [at] gmail.com
 
-Ubuntu 2.6.35 build pathc
+Debian Squeeze with Ubuntu kernel build manual:
 
 ```bash
 # #!/bin/sh
@@ -37,11 +37,11 @@ cd linux-lts-backport-maverick-2.6.35
 #sed -i 's/makedumpfile \[amd64 i386\], //' debian/control
 
 # Remove wireless-crda dependency
-#sed -i 's/, wireless-crda//g' debian/control
-#sed -i 's/, wireless-crda//g' debian/control.stub
-#sed -i 's/, wireless-crda//g' debian.master/control
-#sed -i 's/, wireless-crda//g' debian.master/control.stub
-#sed -i 's/, wireless-crda//g' debian.master/control.d/flavour-control.stub
+sed -i 's/, wireless-crda//g' debian/control
+sed -i 's/, wireless-crda//g' debian/control.stub
+sed -i 's/, wireless-crda//g' debian.master/control
+sed -i 's/, wireless-crda//g' debian.master/control.stub
+sed -i 's/, wireless-crda//g' debian.master/control.d/flavour-control.stub
 
 # Clean up ubuntu kernel requirements
 ### cp /dev/null debian.master/config/enforce 
@@ -57,6 +57,8 @@ patch -p1 < fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.p
 no_dumpfile=true skipabi=true skipmodule=true debian/rules binary-generic
 
 cd ..
+# install new kernel (if u build it corectly, u don't need param ignore-depends)
+dpkg --ignore-depends=wireless-crda -i linux-image-2.6.35-32-generic_2.6.35-32.68~lucid1_amd64.deb
 ```
 
 Customization in booted system.
