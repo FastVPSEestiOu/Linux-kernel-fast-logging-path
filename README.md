@@ -135,6 +135,7 @@ FAQ:
 * What kernel guarantee stable work with this patch? We use v4 kernel with 3.6.35 few years without any issues.
 * This patch is slow down kernel? Not, it's very light patch without performance killer features
 * Do I need create custom backup script for this patch? Yes, I do not know any backup system for this patch.
+* What mean MOD/NEW/REM in backup log? Modify, new and remove :)
 
 Known issues: 
 * If you have many-many-many files changed so recently, you may got errror: "FVLOG: Buffer for cpu 0 is about 80% full" in dmesg need reduce cron start interval for script flush_backups_to_log.pl
