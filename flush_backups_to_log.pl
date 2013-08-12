@@ -25,7 +25,7 @@ my $grep  = '/bin/grep';
 
 # Add path for ignoring from full list of files here
 my @exclude_paths = (
-    #'/data/bin-tmp/sess_',
+    '/data/bin-tmp/sess_',
     #'/var/log/',
     #'/data/logs/',  
     #'/var/backup/',
