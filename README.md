@@ -21,6 +21,8 @@ apt-get install -y libelf-dev binutils-dev libdw-dev xmlto docbook-utils transfi
 
 # Get latest version from:
 # http://packages.ubuntu.com/lucid/linux-image-2.6.35-32-server
+# my mirror for this kernels: https://fastvps.googlecode.com/files/linux-lts-backport-maverick_2.6.35-32.68~lucid1.tar.gz and
+# https://fastvps.googlecode.com/files/linux-lts-backport-maverick_2.6.35-32.68~lucid1.dsc.txt
 wget http://archive.ubuntu.com/ubuntu/pool/main/l/linux-lts-backport-maverick/linux-lts-backport-maverick_2.6.35-32.68~lucid1.dsc
 wget http://archive.ubuntu.com/ubuntu/pool/main/l/linux-lts-backport-maverick/linux-lts-backport-maverick_2.6.35-32.68~lucid1.tar.gz
 
