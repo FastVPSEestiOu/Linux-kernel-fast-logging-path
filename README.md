@@ -6,9 +6,9 @@ Path for linux kernel for building lists on changed files without any overhead
 
 Ubuntu 2.6.35 build pathc
 
-
+```bash
 # #!/bin/sh
-# From https://progress.fastvps.ru/view.php?id=508
+From https://progress.fastvps.ru/view.php?id=508
 
 apt-get update;
 cd /usr/src
@@ -59,4 +59,4 @@ patch -p1 < fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.p
 no_dumpfile=true skipabi=true skipmodule=true debian/rules binary-generic
 
 cd ..
-
+```
