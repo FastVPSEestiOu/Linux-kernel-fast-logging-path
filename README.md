@@ -9,7 +9,6 @@ Ubuntu 2.6.35 build pathc
 
 ```bash
 # #!/bin/sh
-From https://progress.fastvps.ru/view.php?id=508
 
 apt-get update;
 cd /usr/src
@@ -53,7 +52,8 @@ cp /dev/null debian.master/config/enforce
 wget http://..../kernel_configs/config-2.6.35-23-generic -Odebian.master/config/amd64/config.common.amd64
 
 # Bluehost backup patch
-wget http://......./fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.patch
+wget https://raw.github.com/FastVPSEestiOu/Linux-kernel-fast-logging-path/master/fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.patch
+
 patch -p1 < fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.patch
 
 # Build kernel
