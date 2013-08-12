@@ -74,6 +74,8 @@ After that, you need reboot server or call mount -a command.
 Also you need add this script  to cron (every 5 minutes) for prepare full list of changed files: https://raw.github.com/FastVPSEestiOu/Linux-kernel-fast-logging-path/master/flush_backups_to_log.pl
 
 FAQ:
+* What patch I need to use for kernel 2.6.33.5? You need use: fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v3_2_6_33_5.patch
+*  What patch I need to use for kernel 2.6.35? You need use: fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.patch
 * What kernel guarantee stable work with this patch? We use v4 kernel with 3.6.35 few years without any issues.
 * This patch is slow down kernel? Not, it's very light patch without performance killer features
 * Do I need create custom backup script for this patch? Yes, I do not know any backup system for this patch.
