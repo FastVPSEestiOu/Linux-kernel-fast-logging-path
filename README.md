@@ -3,6 +3,7 @@ Linux-kernel-fast-logging-path
 
 Path for linux kernel for building lists on changed files without any overhead
 
+Author: Pavel Bolding, boldin.pavel [at] gmail.com
 
 Ubuntu 2.6.35 build pathc
 
