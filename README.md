@@ -20,40 +20,35 @@ apt-get install -y dpkg-dev devscripts build-essential fakeroot
 apt-get install -y libelf-dev binutils-dev libdw-dev xmlto docbook-utils transfig asciidoc
 
 # Get latest version from:
-# http://packages.ubuntu.com/maverick/linux-source-2.6.35
-wget http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux_2.6.35-23.41.dsc
-wget http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux_2.6.35.orig.tar.gz
-wget http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux_2.6.35-23.41.diff.gz
+# http://packages.ubuntu.com/lucid/linux-image-2.6.35-32-server
+wget http://archive.ubuntu.com/ubuntu/pool/main/l/linux-lts-backport-maverick/linux-lts-backport-maverick_2.6.35-32.68~lucid1.dsc
+wget http://archive.ubuntu.com/ubuntu/pool/main/l/linux-lts-backport-maverick/linux-lts-backport-maverick_2.6.35-32.68~lucid1.tar.gz
+
+
 
 # Apply patches
-dpkg-source -x linux_2.6.35-23.41.dsc
+dpkg-source -x linux-lts-backport-maverick_2.6.35-32.68~lucid1.dsc
 
-cd linux-2.6.35
+cd linux-lts-backport-maverick-2.6.35
 
 # Remove makedumpfile dependency
-sed -i 's/makedumpfile \[amd64 i386\], //' debian/control
+#sed -i 's/makedumpfile \[amd64 i386\], //' debian/control
 
 # Remove wireless-crda dependency
-sed -i 's/, wireless-crda//g' debian/control
-sed -i 's/, wireless-crda//g' debian/control.stub
-sed -i 's/, wireless-crda//g' debian.master/control
-sed -i 's/, wireless-crda//g' debian.master/control.stub
-sed -i 's/, wireless-crda//g' debian.master/control.d/flavour-control.stub
-
-# Null flavour configs
-cp /dev/null debian.master/config/amd64/config.flavour.generic
-cp /dev/null debian.master/config/amd64/config.flavour.server 
-cp /dev/null debian.master/config/amd64/config.flavour.virtual 
+#sed -i 's/, wireless-crda//g' debian/control
+#sed -i 's/, wireless-crda//g' debian/control.stub
+#sed -i 's/, wireless-crda//g' debian.master/control
+#sed -i 's/, wireless-crda//g' debian.master/control.stub
+#sed -i 's/, wireless-crda//g' debian.master/control.d/flavour-control.stub
 
 # Clean up ubuntu kernel requirements
-cp /dev/null debian.master/config/enforce 
+### cp /dev/null debian.master/config/enforce 
 
-# Get our config
-wget http://..../kernel_configs/config-2.6.35-23-generic -Odebian.master/config/amd64/config.common.amd64
+#### Get our config
+### wget http://..../kernel_configs/config-2.6.35-23-generic -Odebian.master/config/amd64/config.common.amd64
 
-# Bluehost backup patch
+# FastVPS backup patch
 wget https://raw.github.com/FastVPSEestiOu/Linux-kernel-fast-logging-path/master/fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.patch
-
 patch -p1 < fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v4_2_6_35.patch
 
 # Build kernel
