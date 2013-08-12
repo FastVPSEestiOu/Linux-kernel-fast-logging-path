@@ -75,7 +75,59 @@ none /mnt/debugfs debugfs
 
 After that, you need reboot server or call mount -a command.
 
-Also you need add this script  to cron (every 5 minutes) for prepare full list of changed files: https://raw.github.com/FastVPSEestiOu/Linux-kernel-fast-logging-path/master/flush_backups_to_log.pl
+After that, you need enable backup logging in sysctl:
+```bash
+echo "kernel.fastvps_logging_user=1" >> /etc/sysctl.conf 
+echo "kernel.fastvps_logging_root=1" >> /etc/sysctl.conf
+sysctl -p 
+```
+
+After that, u will see log files by count of logical processors in the system (zero size is ok, don't worry):
+```bash
+ls -al /mnt/debugfs/backup/
+total 0
+drwxr-xr-x  2 root root 0 Aug 12 23:06 .
+drwxr-xr-x 10 root root 0 Aug 12 23:06 ..
+-r--------  1 root root 0 Aug 12 23:06 log0
+-r--------  1 root root 0 Aug 12 23:06 log1
+-r--------  1 root root 0 Aug 12 23:06 log2
+-r--------  1 root root 0 Aug 12 23:06 log3
+-r--------  1 root root 0 Aug 12 23:06 log4
+-r--------  1 root root 0 Aug 12 23:06 log5
+-r--------  1 root root 0 Aug 12 23:06 log6
+-r--------  1 root root 0 Aug 12 23:06 log7
+```
+
+This files looks like dmesg, if u read files, file size goes to zero:
+```bash
+cat /mnt/debugfs/backup/log1
+0 REM /var/lib/apt/lists/partial/mirror.hetzner.de_debian_packages_dists_squeeze_Release.gpg.reverify
+0 NEW /var/lib/apt/lists/partial/mirror.hetzner.de_debian_packages_dists_squeeze_Release.gpg
+0 REM /var/lib/apt/lists/partial/mirror.hetzner.de_debian_security_dists_squeeze_updates_Release.gpg.reverify
+0 NEW /var/lib/apt/lists/partial/mirror.hetzner.de_debian_security_dists_squeeze_updates_Release.gpg
+0 REM /var/lib/apt/lists/partial/mirror.hetzner.de_debian_backports_dists_squeeze-backports_Release.gpg.reverify
+0 NEW /var/lib/apt/lists/partial/mirror.hetzner.de_debian_backports_dists_squeeze-backports_Release.gpg
+```
+
+And second call show no data:
+```bash
+cat /mnt/debugfs/backup/log1
+# 
+```
+
+Also you need add this script  to cron (every 5 minutes) for prepare full list of changed files:
+
+This script creates full incremental backup log:
+```bash
+cat /var/log/backup/2013-08-12.log 
+0 MOD /root/4913
+0 MOD /root/flush_backups_to_log.pl
+0 MOD /root/.flush_backups_to_log.pl.swp
+0 MOD /root/.viminfo.tmp
+0 MOD /var/log/backup
+0 NEW /root/4913
+...
+```
 
 FAQ:
 * What patch I need to use for kernel 2.6.33.5? You need use: fastvps-hosting-backup-with-chroot-and-var-backup-ignore-v3_2_6_33_5.patch
