@@ -1,0 +1,8 @@
+description "kernelbackupd"
+
+start on local-filesystems
+stop on shutdown
+
+respawn
+
+exec /usr/local/sbin/kernelbackupd
